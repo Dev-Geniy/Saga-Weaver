@@ -1,0 +1,439 @@
+:root {
+    --fantasy-bg: linear-gradient(135deg, #d4e4bc, #f9e4b7);
+    --scifi-bg: linear-gradient(135deg, #0d1b2a, #1b263b);
+    --horror-bg: linear-gradient(135deg, #2b0f0f, #4a1c1c);
+    --fairytale-bg: linear-gradient(135deg, #fce4ec, #fff3e0);
+    --adventure-bg: linear-gradient(135deg, #8d5524, #c9a86b);
+    --fantasy-container: rgba(255, 255, 245, 0.9);
+    --scifi-container: rgba(27, 38, 59, 0.85);
+    --horror-container: rgba(0, 0, 0, 0.5);
+    --fairytale-container: rgba(255, 245, 247, 0.9);
+    --adventure-container: rgba(205, 170, 125, 0.85);
+    --text-dark: #2c1f00;
+    --text-light: #ecf0f1;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+    /* Цвета кнопок и элементов для жанров */
+    --fantasy-accent: #8a9a5b;
+    --scifi-accent: #00d4ff;
+    --horror-accent: #a82424;
+    --fairytale-accent: #ff80ab;
+    --adventure-accent: #c68e17;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: var(--fantasy-bg);
+    transition: background 0.5s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+h2#title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin: 15px 0;
+    text-align: center;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    background: var(--fantasy-container);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, background 0.5s, color 0.5s;
+}
+
+.container:hover {
+    transform: translateY(-3px);
+}
+
+textarea {
+    width: 100%;
+    height: 140px;
+    padding: 15px;
+    border: 2px solid var(--genre-accent, #ccc);
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text-dark);
+}
+
+textarea:focus {
+    border-color: var(--genre-accent, #007BFF);
+    box-shadow: 0 0 5px var(--genre-accent, rgba(0, 123, 255, 0.5));
+    outline: none;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+select, button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select {
+    border: 2px solid var(--genre-accent, #ccc);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--text-dark);
+}
+
+select option {
+    background: white;
+    color: black;
+}
+
+button {
+    border: none;
+    color: white;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--genre-accent, #007BFF), var(--genre-accent-light, #00b4d8));
+}
+
+.primary-btn:hover {
+    background: linear-gradient(45deg, var(--genre-accent-dark, #0056b3), var(--genre-accent, #0096c7));
+    transform: scale(1.05);
+}
+
+.secondary-btn {
+    background: linear-gradient(45deg, var(--genre-accent-secondary, #6c757d), var(--genre-accent-light, #adb5bd));
+}
+
+.secondary-btn:hover {
+    background: linear-gradient(45deg, var(--genre-accent-dark, #5a6268), var(--genre-accent, #95a5a6));
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.control-btn {
+    background: linear-gradient(45deg, var(--genre-accent, #28a745), var(--genre-accent-light, #2ecc71));
+}
+
+.control-btn:hover {
+    background: linear-gradient(45deg, var(--genre-accent-dark, #218838), var(--genre-accent, #27ae60));
+}
+
+#progress {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 10px;
+    background: linear-gradient(45deg, var(--genre-accent, #28a745), var(--genre-accent-light, #2ecc71));
+    border-radius: 5px;
+    transition: width 0.1s ease;
+    margin: 10px auto;
+    max-width: 300px;
+}
+
+.chapter {
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #ddd;
+    animation: fadeIn 0.7s ease-in;
+}
+
+.chapter h2 {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: inherit;
+    margin-bottom: 15px;
+}
+
+.chapter p, .chapter small {
+    line-height: 1.8;
+    font-size: 1rem;
+    color: inherit;
+}
+
+.chapter .chapter-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.share-label {
+    font-size: 1rem;
+    color: inherit;
+    margin-right: 10px;
+}
+
+.share-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: transparent;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.share-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.share-btn.twitter {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/031/737/206/small_2x/twitter-new-logo-twitter-icons-new-twitter-logo-x-2023-x-social-media-icon-free-png.png');
+}
+
+.share-btn.facebook {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/145/145802.png');
+}
+
+.share-btn.telegram {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/5968/5968804.png');
+}
+
+#options-container button {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 12px auto;
+}
+
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.horror-shadow { /* ... существующие стили ... */ }
+.scifi-particle { /* ... существующие стили ... */ }
+.fantasy-spark { /* ... существующие стили ... */ }
+.fairytale-star { /* ... существующие стили ... */ }
+.adventure-cloud { /* ... существующие стили ... */ }
+
+/* Анимации остаются без изменений */
+@keyframes moveShadow { /* ... */ }
+@keyframes moveParticle { /* ... */ }
+@keyframes moveSpark { /* ... */ }
+@keyframes twinkleStar { /* ... */ }
+@keyframes driftCloud { /* ... */ }
+@keyframes fadeIn { /* ... */ }
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2#title { font-size: 1.5rem; }
+    .container { padding: 15px; }
+    .controls { flex-direction: column; }
+    button, select { width: 100%; }
+    .share-btn { width: 28px; height: 28px; }
+}
+
+.horror-shadow {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: moveShadow 25s infinite ease-in-out alternate;
+}
+
+.scifi-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #00d4ff;
+    border-radius: 50%;
+    animation: moveParticle 10s infinite linear;
+}
+
+.fantasy-spark {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #ffd700, transparent);
+    animation: moveSpark 15s infinite ease-in-out alternate;
+}
+
+.fairytale-star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ff80ab, transparent);
+    animation: twinkleStar 12s infinite ease-in-out alternate;
+}
+
+.adventure-cloud {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: driftCloud 20s infinite linear;
+}
+
+@keyframes moveShadow {
+    0% { transform: translate(-100px, -50px) scale(1); opacity: 0.3; }
+    25% { transform: translate(200px, 150px) scale(1.1); opacity: 0.5; }
+    50% { transform: translate(300px, -100px) scale(1.2); opacity: 0.4; }
+    75% { transform: translate(0px, 200px) scale(1.1); opacity: 0.5; }
+    100% { transform: translate(-100px, -50px) scale(1); opacity: 0.3; }
+}
+
+@keyframes moveParticle {
+    0% { transform: translate(0, 0); opacity: 1; }
+    100% { transform: translate(500px, 400px); opacity: 0; }
+}
+
+@keyframes moveSpark {
+    0% { transform: translate(-50px, -30px); opacity: 0.8; }
+    25% { transform: translate(100px, 50px); opacity: 0.6; }
+    50% { transform: translate(-20px, 150px); opacity: 0.7; }
+    75% { transform: translate(80px, -20px); opacity: 0.5; }
+    100% { transform: translate(-50px, -30px); opacity: 0.8; }
+}
+
+@keyframes twinkleStar {
+    0% { transform: translate(-30px, -20px) scale(1); opacity: 0.8; }
+    25% { transform: translate(50px, 30px) scale(1.2); opacity: 1; }
+    50% { transform: translate(-10px, 100px) scale(0.9); opacity: 0.7; }
+    75% { transform: translate(40px, -10px) scale(1.1); opacity: 0.9; }
+    100% { transform: translate(-30px, -20px) scale(1); opacity: 0.8; }
+}
+
+@keyframes driftCloud {
+    0% { transform: translate(-200px, 0); opacity: 0.6; }
+    100% { transform: translate(1200px, 0); opacity: 0.4; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2#title { font-size: 1.5rem; }
+    .container { padding: 15px; }
+    .controls { flex-direction: column; }
+    button, select { width: 100%; }
+    .share-btn { width: 28px; height: 28px; }
+}
+.info-btn {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 20px;
+    width: 30px; /* Одинаковая ширина и высота для круга */
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: var(--genre-accent);
+    color: white;
+    cursor: pointer;
+    display: flex; /* Добавлено для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+}
+
+.translate-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    width: 30px; /* Одинаковая ширина и высота для круга */
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: var(--genre-accent);
+    color: white;
+    cursor: pointer;
+    display: flex; /* Добавлено для центрирования */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    color: var(--text-dark);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--genre-accent-dark);
+}
