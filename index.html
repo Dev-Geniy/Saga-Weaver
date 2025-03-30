@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saga Weaver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <button id="info-btn" class="info-btn" title="Learn more">?</button>
+        <h1>Saga Weaver</h1>
+        <button id="translate-btn" class="translate-btn" title="Switch to Ukrainian">🇺🇦</button>
+    </header>
+    <main>
+        <section id="input-container" class="container">
+            <textarea id="prompt" placeholder="Опишіть початок: хто герой, де він, яка мета..." aria-label="Saga beginning"></textarea>
+            <h2 id="title" style="display: none;"></h2>
+            <div class="controls">
+                <select id="genre" aria-label="Genre">
+                    <option value="fantasy" title="Світ магії та пригод">Фентезі</option>
+                    <option value="scifi" title="Космос і технології майбутнього">Наукова фантастика</option>
+                    <option value="horror" title="Темрява та моторошні таємниці">Жахи</option>
+                    <option value="fairytale" title="Добрі історії та дива">Казка</option>
+                    <option value="adventure" title="Дослідження та небезпека">Пригоди</option>
+                </select>
+                <button onclick="startSaga()" class="primary-btn">Почати</button>
+                <button onclick="resetSaga()" class="secondary-btn">Скинути</button>
+            </div>
+        </section>
+        <section id="progress" aria-live="polite">
+            <div id="progress-bar" style="display: none;"></div>
+        </section>
+        <section id="story-container" class="container"></section>
+        <section id="options-container" class="container"></section>
+    </main>
+    <div id="info-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="close-modal" class="close">×</span>
+            <h2>Про Saga Weaver</h2>
+            <p><strong>Що це?</strong> Saga Weaver — це інтерактивний інструмент для створення історій, де ви задаєте початок і розвиваєте сюжет через вибори.</p>
+            <p><strong>Як користуватися?</strong> Введіть початок історії (мін. 20 символів), оберіть жанр і натисніть "Почати". Після кожної глави робіть вибір або завершуйте сагу кнопкою "Фінал". Збережіть у PDF!</p>
+            <p><strong>Хто створив?</strong> Розроблено [Ваше ім'я або назва команди] з любов’ю до історій і технологій.</p>
+            <p><strong>Версія:</strong> 1.2 | <strong>Дата:</strong> 30 березня 2025</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
